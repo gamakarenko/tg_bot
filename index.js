@@ -1,11 +1,15 @@
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
+const sequelize = require('./db')
+const models = require('./models/models')
 const cors = require('cors');
 const router = express.Router();
 const home = require("./routes/home");
 
+
 const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
 const webAppUrl = 'https://final-final.vercel.app/'
+PORT = 9002 || 5000
 
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
@@ -14,7 +18,7 @@ app.use(cors({
     origin: '*'
 }));
 app.use(express.json());
-
+app.use("/home", home);
 
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
@@ -46,7 +50,21 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, JSON.stringify(data))
 }
 });
-PORT = 9002;
-app.use("/home", home);
 
-app.listen(PORT, () => console.log('server started on PORT ' + PORT))
+const start = async () => {
+try {
+    await sequelize.authenticate()
+    await sequelize.sync()  // Синхронизация модели с таблицей
+/*
+    User.sync() — создает таблицу при отсутствии (существующая таблица остается неизменной)
+User.sync({ force: true }) — удаляет существующую таблицу и создает новую
+User.sync({ alter: true }) — приводит таблицу в соответствие с моделью
+*/
+
+    app.listen(PORT, () => console.log(`Server started on ${PORT} port`))
+} catch (warning) {
+    console.log(warning)
+}
+}
+
+start()
