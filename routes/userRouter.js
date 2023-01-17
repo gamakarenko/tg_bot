@@ -1,5 +1,6 @@
-const Router = require('express')
-const router = new Router()
+const express = require("express");
+const router = express.Router();
+const userController = require('../controllers/userController')
 
 router.get("/", async (req, res, next) => {
   return res.status(200).json({
@@ -8,11 +9,7 @@ router.get("/", async (req, res, next) => {
   });
 });
 
-module.exports = router;
-
-const userController = require('../controllers/userController')
-
-router.post('/registration', userController.registration)
+router.post('/reg', userController.registration)
 //router.post('/login', userController.login)
 
 module.exports = router

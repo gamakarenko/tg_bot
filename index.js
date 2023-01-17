@@ -3,8 +3,8 @@ const express = require('express');
 const sequelize = require('./db')
 const models = require('./models/models')
 const cors = require('cors');
-const router = express.Router();
-const home = require("./routes/home");
+const router = require('./routes/index')
+
 
 
 const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
@@ -18,7 +18,7 @@ app.use(cors({
     origin: '*'
 }));
 app.use(express.json());
-app.use("/home", home);
+app.use('/api', router)
 
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
