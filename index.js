@@ -12,7 +12,9 @@ const app = express();
 
 
 app.use(express.json());
-app.options('*', cors());
+app.use(cors({
+    origin: '*'
+}));
 
 
 
