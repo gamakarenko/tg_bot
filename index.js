@@ -1,4 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
+const cors = require('cors');
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
@@ -6,6 +8,12 @@ const webAppUrl = 'https://final-final.vercel.app/'
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
+const app = express();
+
+
+app.use(express.json());
+app.use(cors());
+
 
 // Matches "/echo [whatever]"
 bot.onText(/\/echo (.+)/, (msg, match) => {
@@ -45,3 +53,5 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, JSON.stringify(data))
 }
 });
+
+app.listen(PORT, () => console.log('server started on PORT ' + PORT))
