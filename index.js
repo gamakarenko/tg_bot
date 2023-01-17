@@ -53,5 +53,8 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, JSON.stringify(data))
 }
 });
+app.get('/', function (req, res) {
+    res.send('Hello World')
+  })
 
 app.listen(PORT, () => console.log('server started on PORT ' + PORT))
