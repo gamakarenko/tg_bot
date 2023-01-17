@@ -44,7 +44,7 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, JSON.stringify(data))
 }
 });
-
+PORT = 9002;
 app.use("/home", home);
 
 app.listen(PORT, () => console.log('server started on PORT ' + PORT))
