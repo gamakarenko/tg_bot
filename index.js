@@ -10,11 +10,10 @@ const webAppUrl = 'https://final-final.vercel.app/'
 const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
-
-app.use(express.json());
 app.use(cors({
     origin: '*'
 }));
+app.use(express.json());
 
 
 
