@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const cors = require('cors');
+const router = express.Router();
 
 // replace the value below with the Telegram token you receive from @BotFather
 const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
@@ -53,7 +54,7 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, JSON.stringify(data))
 }
 });
-app.get('/', function (req, res) {
+router.get('/', function (req, res) {
     res.send('Hello World')
   })
 
