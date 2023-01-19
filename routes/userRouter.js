@@ -10,7 +10,9 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post('/reg', userController.registration)
+router.post('/create', userController.createTransfer)
 router.get('/reg', userController.getAll)
+router.get('/get/:id', userController.getTransfersById)
 //router.post('/login', userController.login)
 //router.post('/login', userController.login)
 //router.post('/login', userController.login)
