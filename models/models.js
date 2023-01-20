@@ -10,6 +10,7 @@ const User = sequelize.define('user', {
 
 const Order = sequelize.define('order', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    userId: {type: DataTypes.STRING},
     share: {type: DataTypes.BOOLEAN, defaultValue: false},
     transferDate: {type: DataTypes.STRING},
     transferTime: {type: DataTypes.STRING}, 

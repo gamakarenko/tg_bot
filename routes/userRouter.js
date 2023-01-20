@@ -2,17 +2,11 @@ const express = require("express");
 const router = express.Router();
 const userController = require('../controllers/userController')
 
-router.get("/", async (req, res, next) => {
-  return res.status(200).json({
-    title: "Express Testing",
-    message: "The app is working properly!",
-  });
-});
-
 router.post('/reg', userController.registration)
-router.post('/create', userController.createTransfer)
+router.post('/create/:id', userController.createTransfer)
 router.get('/reg', userController.getAll)
-router.get('/get/:id', userController.getTransfersById)
+router.get('/transfers/:id', userController.getTransfers)
+router.get('/transfer/:id', userController.getTransferById)
 //router.post('/login', userController.login)
 //router.post('/login', userController.login)
 //router.post('/login', userController.login)

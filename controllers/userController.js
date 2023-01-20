@@ -11,28 +11,36 @@ class UserController {
         const brands = await User.findAll()
         return res.json(brands)
     }
-    async getTransfersById(req, res) {
-        const {id} = req.params
-        console.log(id)
+    async getTransfers(req, res) {
+        const {id} = req.param
         const transfers = await Order.findAll({
-        //     where: {
-        //         share: false,
-        //     }
-        // ,
+        where: {id},
         include: {
-                model: Passenger,
-                as: 'passengers',
-                // where: {age: 'adult'}
+            model: Passenger,
+            as: 'passengers',
         }
     })
         return res.json(transfers)
     }
+    async getTransferById(req, res) {
+        const {id} = req.params
+        const transfer = await Order.findOne({
+            where: {id},
+            include: {
+                model: Passenger,
+                as: 'passengers',
+            }
+        })
+        return res.json(transfer)
+    }
 
     async createTransfer(req, res, next) {
+        const {id} = req.params
         const {share, transferDate, transferTime, pickYouUpFromAirPort, start, end, carType, adults, childrenUnder5, childrenAbove5,passengers} = req.body.order
         const transfer = await Order.create({
+            userId: id,
             share,
-            transferDate: transferDate,
+            transferDate,
             transferTime,
             pickYouUpFromAirPort,
             start,
@@ -45,9 +53,6 @@ class UserController {
         const passenger = await Passenger.bulkCreate(passengers)
         await transfer.addPassenger(passenger)
         return res.json("Поездка создана")
-        // const passenger = await Passenger.bulkCreate(
-        //     passengers
-        // )
     }
 }
 

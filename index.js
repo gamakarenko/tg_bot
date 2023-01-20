@@ -34,15 +34,15 @@ bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text;
 
-    if(text === '/start') {
-         bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
-            reply_markup: {
-                keyboard: [
-                    [{text: 'Отправить данные', web_app: {url: webAppUrl}}]
-                ]
-            }
-        })
-    }
+    // if(text === '/start') {
+    //      bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
+    //         reply_markup: {
+    //             keyboard: [
+    //                 [{text: 'Отправить данные', web_app: {url: webAppUrl}}]
+    //             ]
+    //         }
+    //     })
+    // }
 
   if(msg?.web_app_data?.data) {
     const data = JSON.parse(msg?.web_app_data?.data)
