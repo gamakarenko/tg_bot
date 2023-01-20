@@ -3,7 +3,8 @@ const { User, Passenger, Order } = require('../models/models')
 
 class UserController {
     async getTransfers(req, res) {
-        const {id} = req.param
+        const {id} = req.params
+        console.log(id)
         const transfers = await Order.findAll({
         where: {userId: id},
         include: {
@@ -16,7 +17,7 @@ class UserController {
     async getTransferById(req, res) {
         const {id} = req.params
         const transfer = await Order.findOne({
-            where: {userId: id},
+            where: {id},
             include: {
                 model: Passenger,
                 as: 'passengers',
