@@ -5,7 +5,7 @@ class UserController {
     async getTransfers(req, res) {
         const {id} = req.param
         const transfers = await Order.findAll({
-        where: {id},
+        where: {userId: id},
         include: {
             model: Passenger,
             as: 'passengers',
@@ -16,7 +16,7 @@ class UserController {
     async getTransferById(req, res) {
         const {id} = req.params
         const transfer = await Order.findOne({
-            where: {id},
+            where: {userId: id},
             include: {
                 model: Passenger,
                 as: 'passengers',
