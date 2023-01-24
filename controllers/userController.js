@@ -46,6 +46,51 @@ class UserController {
         await transfer.addPassenger(passenger)
         return res.json("Поездка создана")
     }
+
+    async editTransferById(req, res) {
+        const {id} = req.params
+        // const transfer = await Order.findOne({
+        //     where: {id},
+        //     include: {
+        //         model: Passenger,
+        //         as: 'passengers',
+        //     }
+        // })
+        const {share, transferDate, transferTime, pickYouUpFromAirPort, start, end, carType, adults, childrenUnder5, childrenAbove5, passengers, userId} = req.body.order
+        const newTransfer = await Order.update({
+            userId,
+            share,
+            transferDate,
+            transferTime,
+            pickYouUpFromAirPort,
+            start,
+            end,
+            carType,
+            adults,
+            childrenUnder5,
+            childrenAbove5,
+        },
+        {
+            where: {id}
+        })
+        const deletePrevios = await Passenger.destroy({
+            where: {orderId: id}
+        })
+        const newPasengers = await Passenger.bulkCreate(
+            passengers
+        // ,
+        // {
+        //     where: {orderId: id}
+        
+        // }
+        )
+        // const passenger = await Passenger.bulkCreate(passengers)
+        // await newTransfer.setPassenger(passenger)
+
+        return res.json('Данные обновлены')
+    }
+
+
 }
 
 module.exports = new UserController()

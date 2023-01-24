@@ -11,7 +11,7 @@ const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
 const webAppUrl = 'https://final-final.vercel.app/'
 PORT = 9002 || 5000
 
-const bot = new TelegramBot(token, {polling: true});
+// const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
 app.use(cors({
@@ -21,18 +21,18 @@ app.use(express.json());
 app.use('/api', router)
 
 
-bot.onText(/\/echo (.+)/, (msg, match) => {
+// bot.onText(/\/echo (.+)/, (msg, match) => {
 
-  const chatId = msg.chat.id;
-  const resp = match[1];
+//   const chatId = msg.chat.id;
+//   const resp = match[1];
 
-  bot.sendMessage(chatId, resp);
+//   bot.sendMessage(chatId, resp);
 
-});
+// });
 
-bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
-  const text = msg.text;
+// bot.on('message', (msg) => {
+//   const chatId = msg.chat.id;
+//   const text = msg.text;
 
     // if(text === '/start') {
     //      bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
@@ -44,12 +44,12 @@ bot.on('message', (msg) => {
     //     })
     // }
 
-  if(msg?.web_app_data?.data) {
-    const data = JSON.parse(msg?.web_app_data?.data)
-    console.log(data)
-    bot.sendMessage(chatId, JSON.stringify(data))
-}
-});
+//   if(msg?.web_app_data?.data) {
+//     const data = JSON.parse(msg?.web_app_data?.data)
+//     console.log(data)
+//     bot.sendMessage(chatId, JSON.stringify(data))
+// }
+// });
 
 const start = async () => {
 try {
