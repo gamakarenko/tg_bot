@@ -7,6 +7,7 @@ class UserController {
         console.log(id)
         const transfers = await Order.findAll({
         where: {userId: id},
+        order: [['id', 'ASC']],
         include: {
             model: Passenger,
             as: 'passengers',
