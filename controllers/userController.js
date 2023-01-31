@@ -67,7 +67,7 @@ class UserController {
         //         as: 'passengers',
         //     }
         // })
-        const {share, transferDate, transferTime, pickYouUpFromAirPort, start, end, carType, adults, childrenUnder5, childrenAbove5, passengers, userId} = req.body.order
+        const {share, transferDate, transferTime, pickYouUpFromAirPort, start, end, carType, adults, childrenUnder5, childrenAbove5, passengers, userId} = req.body
         const newTransfer = await Order.update({
             userId,
             share,
