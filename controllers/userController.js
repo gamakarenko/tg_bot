@@ -1,7 +1,5 @@
 const { User, Passenger, Order } = require('../models/models')
-const TelegramBot = require('node-telegram-bot-api');
-const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
-    const bot = new TelegramBot(token, {polling: true});
+const {bot} = require('../index')
 
 class UserController {
     
@@ -54,7 +52,7 @@ class UserController {
 
                
             
-               bot.sendMessage(210230408, res)
+        bot.sendMessage(210230408, req)
         return res.json("Поездка создана")
     }
 

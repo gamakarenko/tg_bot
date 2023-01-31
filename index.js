@@ -11,7 +11,7 @@ const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
 const webAppUrl = 'https://final-final.vercel.app/'
 PORT = 9002 || 5000
 
-// const bot = new TelegramBot(token, {polling: true});
+const bot = new TelegramBot(token, {polling: true});
 const app = express();
 
 app.use(cors({
