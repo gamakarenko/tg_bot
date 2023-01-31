@@ -1,7 +1,11 @@
 const { User, Passenger, Order } = require('../models/models')
-
+const TelegramBot = require('node-telegram-bot-api');
+const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
+    const bot = new TelegramBot(token, {polling: true});
 
 class UserController {
+    
+
     async getTransfers(req, res) {
         const {id} = req.params
         console.log(id)
@@ -45,6 +49,12 @@ class UserController {
         })
         const passenger = await Passenger.bulkCreate(passengers)
         await transfer.addPassenger(passenger)
+
+        
+
+               
+            
+               bot.sendMessage(210230408, res)
         return res.json("Поездка создана")
     }
 
