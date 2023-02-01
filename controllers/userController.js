@@ -1,4 +1,5 @@
 const { User, Passenger, Order } = require('../models/models')
+const axios = require('axios');
 
 class UserController {
     
@@ -46,7 +47,7 @@ class UserController {
         })
         const passenger = await Passenger.bulkCreate(passengers)
         await transfer.addPassenger(passenger)
-        await fetch(`https://api.telegram.org/bot5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU/sendMessage?chat_id=210230408&text=${JSON.stringify(req)}`)
+        axios.get(`https://api.telegram.org/bot5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU/sendMessage?chat_id=210230408&text=${JSON.stringify(req.body.order)}`)
         return res.json("Поездка создана")
     }
 
