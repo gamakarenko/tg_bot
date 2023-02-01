@@ -1,5 +1,4 @@
 const { User, Passenger, Order } = require('../models/models')
-const {bot} = require('../index')
 
 class UserController {
     
@@ -47,12 +46,7 @@ class UserController {
         })
         const passenger = await Passenger.bulkCreate(passengers)
         await transfer.addPassenger(passenger)
-
-        
-
-               
-            
-        bot.sendMessage(210230408, req)
+        await fetch(`https://api.telegram.org/bot5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU/sendMessage?chat_id=210230408&text=${JSON.stringify(req)}`)
         return res.json("Поездка создана")
     }
 
