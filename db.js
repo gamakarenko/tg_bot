@@ -4,10 +4,10 @@ const { Sequelize } = require("sequelize")
 module.exports = new Sequelize(
     "vqjhduqs", // Название базы данных
     'vqjhduqs', // Пользователь
-    '1b_Wcx9hGaw7a4QvrC0RZ6WkYCS80YO2', // Пароль
+    '4oh5JKhdbaFBYy53x5wpxQCpuUojFX8K', // Пароль
     {
         dialect: 'postgres',
-        host: 'dumbo.db.elephantsql.com',
+        host: 'hattie.db.elephantsql.com',
         // port: '9002'
     }
 )
