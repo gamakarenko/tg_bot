@@ -47,7 +47,7 @@ class UserController {
         })
         const passenger = await Passenger.bulkCreate(passengers)
         await transfer.addPassenger(passenger)
-        axios.get(`https://api.telegram.org/bot5790567628:AAGYZZ2jOC8lmTGCTOZAPIRJ97w8daZIiwc/sendMessage?chat_id=356840503&text=${JSON.stringify(req.body.order)}`)
+        axios.get(`https://api.telegram.org/bot6012133392:AAF5GhVftU82Fevftn1cQb3Z5by_fygcljQ/sendMessage?chat_id=356840503&text=${JSON.stringify(req.body.order)}`)
         return res.json("Поездка создана")
     }
 

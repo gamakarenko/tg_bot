@@ -7,8 +7,8 @@ const router = require('./routes/index')
 
 
 
-const token = '5741365706:AAF_9pixhfXSGu64g7oQbVrAwZjQUOUePeU';
-const webAppUrl = 'https://final-final.vercel.app/'
+const token = '6012133392:AAF5GhVftU82Fevftn1cQb3Z5by_fygcljQ';
+const webAppUrl = 'https://final-final-nu.vercel.app'
 PORT = 9002 || 5000
 
 const bot = new TelegramBot(token, {polling: true});
