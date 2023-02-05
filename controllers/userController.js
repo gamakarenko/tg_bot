@@ -3,7 +3,7 @@ const axios = require('axios');
 
 class UserController {
     
-
+//
     async getTransfers(req, res) {
         const {id} = req.params
         console.log(id)
